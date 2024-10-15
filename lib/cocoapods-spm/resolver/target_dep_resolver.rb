@@ -51,6 +51,7 @@ module Pod
           deps_by_name.each do |name, ds|
             deps_by_name[name] = ds.uniq { |d| [d.name, d.product] }
           end
+          deps_by_name = deps_by_name.reject { |name, deps| deps.any? { |d| d.pkg&.available_in_top_level_target? == false } }
           deps_by_name.values.flatten
         end
 

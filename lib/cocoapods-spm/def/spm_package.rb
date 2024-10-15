@@ -55,6 +55,10 @@ module Pod
         @linking_opts.fetch(:use_default_xcode_linking, false)
       end
 
+      def available_in_top_level_target?
+        @linking_opts.fetch(:available_in_top_level_target, true)
+      end
+
       def linker_flags
         @linking_opts[:linker_flags] || []
       end
